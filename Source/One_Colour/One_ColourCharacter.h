@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "One_ColourGameMode.h"
 #include "One_ColourCharacter.generated.h"
+
 
 class UInputComponent;
 
@@ -119,6 +121,8 @@ protected:
 	void TouchUpdate(const ETouchIndex::Type FingerIndex, const FVector Location);
 	TouchData	TouchItem;
 	
+	void IncrementColour();//Switch the colour of the gamemode
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;

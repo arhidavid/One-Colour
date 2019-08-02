@@ -12,6 +12,8 @@
 #include "MotionControllerComponent.h"
 #include "XRMotionControllerBase.h" // for FXRMotionControllerBase::RightHandSourceId
 
+
+
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
 //////////////////////////////////////////////////////////////////////////
@@ -116,6 +118,7 @@ void AOne_ColourCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	// Bind jump events
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("IncrementColour", IE_Pressed, this, &AOne_ColourCharacter::IncrementColour);
 
 	// Bind fire event
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AOne_ColourCharacter::OnFire);
@@ -297,4 +300,13 @@ bool AOne_ColourCharacter::EnableTouchscreenMovement(class UInputComponent* Play
 	}
 	
 	return false;
+}
+
+void AOne_ColourCharacter::IncrementColour()
+{
+	auto colourGameMode = Cast<AOne_ColourGameMode>(GetWorld()->GetAuthGameMode());
+	if (colourGameMode)
+	{
+		colourGameMode->IncrementColour();
+	}
 }
