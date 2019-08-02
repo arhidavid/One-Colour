@@ -110,7 +110,6 @@ Build/Android/res/*/*
 # End of https://www.gitignore.io/api/c++,unrealengine
 
 ### My ignores
-Content/StarterContent
 Weapons
 /Content/ModularRPGHeroesPolyart/Maps
 /Content/ModularRPGHeroesPolyart/CharacterBP/OneMeshCharacterBP.uasset
