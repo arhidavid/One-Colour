@@ -22,6 +22,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	EColour	ColourOfThisWall;
 
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	class UStaticMeshComponent* StaticMesh;
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	class UMaterialInterface* OnMaterial;
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	class UMaterialInterface* OffMaterial;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
