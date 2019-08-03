@@ -20,7 +20,8 @@ AOne_ColourGameMode::AOne_ColourGameMode()
 }
 
 void AOne_ColourGameMode::IncrementColour()
-{
+{	
+
 	switch (GlobalColour)
 	{
 	case EColour::Red: GlobalColour = EColour::Green; break;
@@ -30,3 +31,19 @@ void AOne_ColourGameMode::IncrementColour()
 	ColourChanged.Broadcast();
 }
 
+FVector AOne_ColourGameMode::GetColourVector(EColour Colour)
+{
+	FVector VColour;
+	switch (Colour)
+	{
+	case EColour::Red: VColour = FVector(1, 0, 0);
+		break;
+	case EColour::Green: FVector(0, 1, 0);
+		break;
+	case EColour::Blue: FVector(0, 0, 1);
+		break;
+	default:	VColour = FVector(1, 0, 0);
+		break;
+	}
+	return VColour;
+}
