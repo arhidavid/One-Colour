@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "One_ColourGameMode.h"
 #include "One_ColourCharacter.generated.h"
 
 class UInputComponent;

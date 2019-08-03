@@ -29,7 +29,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ActiveColour)
 	EColour ActiveColour = EColour::Red;
-};
+
 
 	UPROPERTY(BlueprintReadWrite)
 	EColour GlobalColour;//this is the global colour
