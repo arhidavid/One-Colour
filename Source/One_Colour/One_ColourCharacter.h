@@ -147,6 +147,7 @@ public:
 	FORCEINLINE class USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	void OnColourChange();
 };
 
