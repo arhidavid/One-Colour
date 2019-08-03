@@ -10,10 +10,6 @@ ACPP_ColouredWallv2::ACPP_ColouredWallv2()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
-	StaticMesh->SetupAttachment(RootComponent);
-	RootComponent = StaticMesh;
 	OnMaterial = CreateDefaultSubobject<UMaterialInterface>(TEXT("OnMaterial"));
 	OffMaterial = CreateDefaultSubobject<UMaterialInterface>(TEXT("OffMaterial"));
 }
@@ -29,19 +25,15 @@ void ACPP_ColouredWallv2::BeginPlay()
 
 void ACPP_ColouredWallv2::GlobalColourChanged()
 {
-	if (ensure(StaticMesh))
-	{	
-		if (CurrentGameMode->GlobalColour == ColourOfThisWall)
+	if (CurrentGameMode->GlobalColour == ColourOfThisWall)
 		{
-		UE_LOG(LogTemp, Warning, TEXT("Its the colour!"));
-		StaticMesh->SetMaterial(0, OnMaterial);
-		return;
+			UE_LOG(LogTemp, Warning, TEXT("Its the colour!"));
+			FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, OnMaterial);
+			return;
 		}
 	UE_LOG(LogTemp, Warning, TEXT("It is glass"));
-	StaticMesh->SetMaterial(0, OffMaterial);
+	FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, OffMaterial);
 	return;
-	}
-	UE_LOG(LogTemp, Warning, TEXT("Failed to find static mesh component of this actor."));
 }
 
 // Called every frame

@@ -23,13 +23,10 @@ public:
 	EColour	ColourOfThisWall;
 
 	UPROPERTY(EditAnywhere, Category = "Setup")
-	class UStaticMeshComponent* StaticMesh;
+	UMaterialInterface* OnMaterial;
 
 	UPROPERTY(EditAnywhere, Category = "Setup")
-	class UMaterialInterface* OnMaterial;
-
-	UPROPERTY(EditAnywhere, Category = "Setup")
-	class UMaterialInterface* OffMaterial;
+	UMaterialInterface* OffMaterial;
 
 protected:
 	// Called when the game starts or when spawned
