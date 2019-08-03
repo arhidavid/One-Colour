@@ -26,7 +26,6 @@ class AOne_ColourGameMode : public AGameModeBase
 public:
 	AOne_ColourGameMode();
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ActiveColour)
 	EColour ActiveColour = EColour::Red;
 
