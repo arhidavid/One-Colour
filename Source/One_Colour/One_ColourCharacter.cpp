@@ -103,6 +103,14 @@ void AOne_ColourCharacter::BeginPlay()
 		VR_Gun->SetHiddenInGame(true, true);
 		Mesh1P->SetHiddenInGame(false, true);
 	}
+
+	auto colourGameMode = Cast<AOne_ColourGameMode>(GetWorld()->GetAuthGameMode());
+	if (colourGameMode)
+	{
+		WeaponColour = colourGameMode->GlobalColour;
+		//TSharedPtr<AOne_ColourCharacter> ptr = this;
+		colourGameMode->ColourChanged.AddUObject(this, &AOne_ColourCharacter::OnColourChange);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -116,6 +124,7 @@ void AOne_ColourCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	// Bind jump events
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAction("IncrementColour", IE_Pressed, this, &AOne_ColourCharacter::IncrementColour);
 
 	// Bind fire event
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AOne_ColourCharacter::OnFire);
@@ -298,3 +307,19 @@ bool AOne_ColourCharacter::EnableTouchscreenMovement(class UInputComponent* Play
 	
 	return false;
 }
+
+
+void AOne_ColourCharacter::IncrementColour()
+{
+	auto colourGameMode = Cast<AOne_ColourGameMode>(GetWorld()->GetAuthGameMode());
+	if (colourGameMode)
+	{
+		colourGameMode->IncrementColour();
+	}
+}
+
+void AOne_ColourCharacter::OnColourChange()
+{
+	OnFire();
+}
+

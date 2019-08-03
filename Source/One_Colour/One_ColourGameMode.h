@@ -14,6 +14,10 @@ enum class EColour : uint8
 	Blue	UMETA(DisplayName = "Blue")
 };
 
+
+DECLARE_EVENT(AOne_ColourGameMode, FColourChangeEvent)
+
+
 UCLASS(minimalapi)
 class AOne_ColourGameMode : public AGameModeBase
 {
@@ -22,6 +26,23 @@ class AOne_ColourGameMode : public AGameModeBase
 public:
 	AOne_ColourGameMode();
 
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ActiveColour)
 	EColour ActiveColour = EColour::Red;
+
+
+	UPROPERTY(BlueprintReadWrite)
+	EColour GlobalColour;//this is the global colour
+	UFUNCTION(BlueprintCallable)
+	void IncrementColour();
+	//void DecrementColour();
+	FColourChangeEvent ColourChanged;
+	FColourChangeEvent& OnChanged() { return ColourChanged; }
+
+private:
+	
 };
+
+
+
+
