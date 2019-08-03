@@ -21,6 +21,7 @@ void ACPP_ColouredWallv2::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("%s is "), this);
 	CurrentGameMode = Cast<AOne_ColourGameMode>(GetWorld()->GetAuthGameMode());
 	CurrentGameMode->ColourChanged.AddUObject(this, &ACPP_ColouredWallv2::GlobalColourChanged);
+	GlobalColourChanged();
 }
 
 void ACPP_ColouredWallv2::GlobalColourChanged()
@@ -28,11 +29,15 @@ void ACPP_ColouredWallv2::GlobalColourChanged()
 	if (CurrentGameMode->GlobalColour == ColourOfThisWall)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Its the colour!"));
-			FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, OnMaterial);
+			//FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, OnMaterial);
+			ColorMatches = true;
+			this->MatchedColorIsSelected(ColorMatches);
 			return;
 		}
 	UE_LOG(LogTemp, Warning, TEXT("It is glass"));
-	FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, OffMaterial);
+	//FindComponentByClass<UStaticMeshComponent>()->SetMaterial(0, OffMaterial);
+	ColorMatches = false;
+	this->MatchedColorIsSelected(ColorMatches);
 	return;
 }
 

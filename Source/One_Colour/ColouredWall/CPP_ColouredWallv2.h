@@ -28,15 +28,20 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	UMaterialInterface* OffMaterial;
 
+	UFUNCTION()
+	void GlobalColourChanged();
+
+	bool ColorMatches;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void MatchedColorIsSelected(bool ColorMatches);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
 	EColour GlobalColour;
-
-	UFUNCTION()
-	void GlobalColourChanged();
 
 	AOne_ColourGameMode *CurrentGameMode;
 };
