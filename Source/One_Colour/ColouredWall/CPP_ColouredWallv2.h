@@ -28,4 +28,9 @@ protected:
 
 private:
 	EColour GlobalColour;
+
+	UFUNCTION()
+	void GlobalColourChanged();
+
+	AOne_ColourGameMode *CurrentGameMode;
 };
