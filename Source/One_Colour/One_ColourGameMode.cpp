@@ -15,6 +15,7 @@ AOne_ColourGameMode::AOne_ColourGameMode()
 	// use our custom HUD class
 	HUDClass = AOne_ColourHUD::StaticClass();
 	GlobalColour = EColour::Red;
+	
 }
 
 void AOne_ColourGameMode::IncrementColour()
@@ -25,4 +26,5 @@ void AOne_ColourGameMode::IncrementColour()
 		case EColour::Green: GlobalColour = EColour::Blue; break;
 		case EColour::Blue: GlobalColour = EColour::Red; break;
 	}
+	ColourChanged.Broadcast();
 }

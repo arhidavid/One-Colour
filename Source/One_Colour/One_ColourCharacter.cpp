@@ -105,6 +105,14 @@ void AOne_ColourCharacter::BeginPlay()
 		VR_Gun->SetHiddenInGame(true, true);
 		Mesh1P->SetHiddenInGame(false, true);
 	}
+
+	auto colourGameMode = Cast<AOne_ColourGameMode>(GetWorld()->GetAuthGameMode());
+	if (colourGameMode)
+	{
+		WeaponColour = colourGameMode->GlobalColour;
+		//TSharedPtr<AOne_ColourCharacter> ptr = this;
+		colourGameMode->ColourChanged.AddUObject(this, &AOne_ColourCharacter::OnColourChange);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -309,4 +317,9 @@ void AOne_ColourCharacter::IncrementColour()
 	{
 		colourGameMode->IncrementColour();
 	}
+}
+
+void AOne_ColourCharacter::OnColourChange()
+{
+	OnFire();
 }

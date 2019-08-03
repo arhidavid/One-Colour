@@ -15,6 +15,7 @@ enum class EColour : uint8
 	Blue   UMETA(DisplayName = "Blue"),
 };
 
+DECLARE_EVENT(AOne_ColourGameMode, FColourChangeEvent)
 
 UCLASS(minimalapi)
 class AOne_ColourGameMode : public AGameModeBase
@@ -30,6 +31,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void IncrementColour();
 	//void DecrementColour();
+	FColourChangeEvent ColourChanged;
+	FColourChangeEvent& OnChanged() { return ColourChanged; }
+
+private:
+	
 };
 
 
