@@ -16,7 +16,7 @@ ACPP_ColouredWallv2::ACPP_ColouredWallv2()
 void ACPP_ColouredWallv2::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	UE_LOG(LogTemp, Warning, TEXT("%s is "), this);
 }
 
 // Called every frame
@@ -24,12 +24,12 @@ void ACPP_ColouredWallv2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	auto CurrentGameMode = Cast<AOne_ColourGameMode>(GetWorld()->GetAuthGameMode());
-	EColour CurrentColour = CurrentGameMode->ActiveColour;
-	if (CurrentColour == EColour::Red)
+	EColour CurrentColour = CurrentGameMode->GlobalColour;
+	if (CurrentColour == ColourOfThisWall)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Current colour is red"));
+		UE_LOG(LogTemp, Warning, TEXT("Its the colour!"));
 		return;
 	}
-	UE_LOG(LogTemp, Warning, TEXT("It is not red"));
+	UE_LOG(LogTemp, Warning, TEXT("It is glass"));
 	return;
 }
