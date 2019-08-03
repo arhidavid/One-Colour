@@ -33,4 +33,3 @@ void ACPP_ColouredWallv2::Tick(float DeltaTime)
 	UE_LOG(LogTemp, Warning, TEXT("It is not red"));
 	return;
 }
-
