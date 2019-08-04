@@ -22,12 +22,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
 	EColour	ColourOfThisWall;
 
-	UPROPERTY(EditAnywhere, Category = "Setup")
-	UMaterialInterface* OnMaterial;
-
-	UPROPERTY(EditAnywhere, Category = "Setup")
-	UMaterialInterface* OffMaterial;
-
 	UFUNCTION()
 	void GlobalColourChanged();
 
