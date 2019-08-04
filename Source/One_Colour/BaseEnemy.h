@@ -21,7 +21,41 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UStaticMeshComponent* Body;
+	//reference to player
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		ACharacter* playerRef;
 
+	UPROPERTY(VisibleAnywhere)
+		float KnockBack;
+
+	UPROPERTY(VisibleAnywhere)
+		bool inAttackRange;
+
+	UPROPERTY(VisibleAnywhere)
+		bool canAttack;
+
+	UPROPERTY(VisibleAnywhere)
+		bool isStunned;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		bool tryAttack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float damage;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float startingHealth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float currentHealth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool isDead;
+
+	UPROPERTY(EditAnywhere)
+		UAnimSequence *Anim;
+
+	FVector startPos;
 
 protected:
 	// Called when the game starts or when spawned
@@ -35,5 +69,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
 	
-	
+	UFUNCTION(BlueprintCallable)
+		void TakeDamage(float dmg);
+
+	UFUNCTION(BlueprintCallable)
+		void KillEnemy();
+	UFUNCTION(BlueprintCallable)
+		void SetPlayerRef();
 };
