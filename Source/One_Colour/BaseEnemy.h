@@ -60,7 +60,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay();
-	void OnHit(class UPrimitiveComponent* HitComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime);
@@ -76,4 +77,6 @@ public:
 		void KillEnemy();
 	UFUNCTION(BlueprintCallable)
 		void SetPlayerRef();
+
+	void OnHit(class UPrimitiveComponent* HitComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 };

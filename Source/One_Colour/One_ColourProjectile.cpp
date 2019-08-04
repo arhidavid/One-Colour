@@ -31,6 +31,18 @@ AOne_ColourProjectile::AOne_ColourProjectile()
 	InitialLifeSpan = 3.0f;
 }
 
+void AOne_ColourProjectile::BeginPlay() 
+{
+	AActor::BeginPlay();
+	auto colourGameMode = Cast<AOne_ColourGameMode>(GetWorld()->GetAuthGameMode());
+	if (colourGameMode)
+	{
+		Colour = colourGameMode->GlobalColour;
+		//TSharedPtr<AOne_ColourCharacter> ptr = this;
+		
+	}
+}
+
 void AOne_ColourProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	// Only add impulse and destroy projectile if we hit a physics

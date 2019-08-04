@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "One_ColourGameMode.h"
 #include "One_ColourProjectile.generated.h"
 
 UCLASS(config=Game)
@@ -21,6 +22,8 @@ class AOne_ColourProjectile : public AActor
 
 public:
 	AOne_ColourProjectile();
+	void BeginPlay() override;
+	EColour Colour;
 
 	/** called when projectile hits something */
 	UFUNCTION()

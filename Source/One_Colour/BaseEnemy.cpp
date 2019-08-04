@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/Classes/Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
+#include "One_ColourProjectile.h"
 #include "Engine/World.h"
 
 // Sets default values
@@ -98,6 +99,7 @@ void ABaseEnemy::Tick(float DeltaTime)
 	{
 		isDead = true;
 		//KillEnemy();
+		Destroy();
 	}
 }
 
@@ -130,7 +132,14 @@ void ABaseEnemy::KillEnemy()
 }
 void ABaseEnemy::OnHit(class UPrimitiveComponent* HitComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	// do something here
+	auto proj = Cast<AOne_ColourProjectile>(OtherActor);
+	if (proj)
+	{
+		if (proj->Colour == Colour)
+		{
+			TakeDamage(50);
+		}
+	}
 }
 
 void ABaseEnemy::SetPlayerRef()
