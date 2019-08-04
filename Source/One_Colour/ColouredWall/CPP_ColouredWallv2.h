@@ -34,8 +34,11 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-private:
-	EColour GlobalColour;
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
-	AOne_ColourGameMode *CurrentGameMode;
+private:
+	EColour CurrentColour;
+
 };

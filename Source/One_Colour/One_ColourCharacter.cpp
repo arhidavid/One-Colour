@@ -111,6 +111,7 @@ void AOne_ColourCharacter::BeginPlay()
 		//TSharedPtr<AOne_ColourCharacter> ptr = this;
 		colourGameMode->ColourChanged.AddUObject(this, &AOne_ColourCharacter::OnColourChange);
 	}
+	
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -318,8 +319,8 @@ void AOne_ColourCharacter::IncrementColour()
 	}
 }
 
-void AOne_ColourCharacter::OnColourChange()
+void AOne_ColourCharacter::OnColourChange_Implementation()
 {
-	OnFire();
+	//OnFire();
 }
 
