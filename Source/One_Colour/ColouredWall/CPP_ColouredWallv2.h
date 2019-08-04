@@ -11,8 +11,8 @@ UCLASS()
 class ONE_COLOUR_API ACPP_ColouredWallv2 : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ACPP_ColouredWallv2();
 
@@ -20,25 +20,22 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
-	EColour	ColourOfThisWall;
+		EColour	ColourOfThisWall;
 
 	UFUNCTION()
-	void GlobalColourChanged();
+		void GlobalColourChanged();
 
 	bool ColorMatches;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void MatchedColorIsSelected(bool ColorMatches);
+		void MatchedColorIsSelected(bool ColorMatches);
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 private:
-	EColour CurrentColour;
+	EColour GlobalColour;
 
+	AOne_ColourGameMode *CurrentGameMode;
 };
