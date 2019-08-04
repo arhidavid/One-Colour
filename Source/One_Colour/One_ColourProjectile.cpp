@@ -29,8 +29,6 @@ AOne_ColourProjectile::AOne_ColourProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
-	
-
 }
 
 void AOne_ColourProjectile::BeginPlay() 

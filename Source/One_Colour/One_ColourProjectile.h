@@ -25,15 +25,9 @@ public:
 	void BeginPlay() override;
 	EColour Colour;
 
-	AOne_ColourGameMode* colourGameMode;
-
 	/** called when projectile hits something */
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
-
-	// Projectile colour variable
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ProjectileColour)
-	EColour ProjectileColour;
 
 	/** Returns CollisionComp subobject **/
 	FORCEINLINE class USphereComponent* GetCollisionComp() const { return CollisionComp; }

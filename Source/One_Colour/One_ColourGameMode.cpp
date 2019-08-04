@@ -20,8 +20,7 @@ AOne_ColourGameMode::AOne_ColourGameMode()
 }
 
 void AOne_ColourGameMode::IncrementColour()
-{	
-
+{
 	switch (GlobalColour)
 	{
 	case EColour::Red: GlobalColour = EColour::Green; break;
