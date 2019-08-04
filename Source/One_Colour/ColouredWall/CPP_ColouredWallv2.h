@@ -16,15 +16,32 @@ public:
 	// Sets default values for this actor's properties
 	ACPP_ColouredWallv2();
 
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup")
+	EColour	ColourOfThisWall;
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	UMaterialInterface* OnMaterial;
+
+	UPROPERTY(EditAnywhere, Category = "Setup")
+	UMaterialInterface* OffMaterial;
+
+	UFUNCTION()
+	void GlobalColourChanged();
+
+	bool ColorMatches;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void MatchedColorIsSelected(bool ColorMatches);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 private:
-	EColour CurrentColour;
+	EColour GlobalColour;
 
+	AOne_ColourGameMode *CurrentGameMode;
 };

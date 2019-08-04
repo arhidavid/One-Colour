@@ -28,10 +28,8 @@ class AOne_ColourGameMode : public AGameModeBase
 public:
 	AOne_ColourGameMode();
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ActiveColour)
 	EColour ActiveColour = EColour::Red;
-
 
 	UPROPERTY(BlueprintReadWrite)
 	EColour GlobalColour;//this is the global colour
