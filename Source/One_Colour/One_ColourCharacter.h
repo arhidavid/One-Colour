@@ -18,10 +18,6 @@ class AOne_ColourCharacter : public ACharacter
 	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
 	class USkeletalMeshComponent* Mesh1P;
 
-	/** Gun mesh: 1st person view (seen only by self) */
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	class USkeletalMeshComponent* FP_Gun;
-
 	/** Location on gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 	class USceneComponent* FP_MuzzleLocation;
@@ -53,6 +49,10 @@ protected:
 	virtual void BeginPlay();
 
 public:
+	/** Gun mesh: 1st person view (seen only by self) */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh)
+	class USkeletalMeshComponent* FP_Gun;
+
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseTurnRate;
